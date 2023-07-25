@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +11,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+$nc = "App\Http\Controllers\\";// Namespace del controller
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('login');
+// });
+
+// Route::view('/log-in', 'login');
+// Route::view('/log-up', 'login')->name("log-up");
+
+Route::get("/", $nc."LoginController@index");
+
+
+Route::controller($nc.LoginController::class)->group( function(){
+    Route::get('/log-in', "index")->name("log-in");
+    Route::get('/log-up', "index")->name("log-up");
+    Route::post('/log-in', "auth");
+
 });
