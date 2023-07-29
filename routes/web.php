@@ -29,6 +29,7 @@ Route::get("/", [LoginController::class, "index"]);
 Route::controller(LoginController::class)->group( function(){
     Route::get('/log-in', "index")->name("log-in");
     Route::get('/log-up', "index")->name("log-up");
+    Route::post('/log-up', "store");
     Route::post('/log-in', "auth");
 
     // Route::get("profiles", "index");
