@@ -8,8 +8,12 @@ use Illuminate\Support\Facades\URL;
 class LoginController extends Controller
 {
     public function index() {
+        $activeUp = "";
+        $activeIn  = "";
 
-        return view('login');
+        (request()->routeIs('log-up')) ? $activeUp="active" : $activeIn=  "active" ;
+
+        return view('login', ["activeUp"=>$activeUp, "activeIn"=>$activeIn]);
     }
 
 

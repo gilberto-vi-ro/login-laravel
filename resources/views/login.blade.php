@@ -14,8 +14,8 @@
     }
     .login-title.active a{
         padding-bottom: 3px;
-        color:#000;
-        border-bottom: 3px solid #000;
+        color:#0d6efd;
+        border-bottom: 3px solid #0d6efd;
     }
 
 
@@ -27,15 +27,16 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-around">
-                        <h4 class="login-title {{ (request()->routeIs('log-in')) ? 'active' : '' }}"><a href="{{ url('log-in') }}">Acceso</a></h4>
-                        <h4 class="login-title {{ (request()->routeIs('log-up')) ? 'active' : '' }}"><a href="{{ url('log-up') }}">Resgistro</a></h4>
+
+                        <h4 class="login-title {{ $activeIn }}"><a href="{{ url('log-in') }}">Acceso</a></h4>
+                        <h4 class="login-title {{ $activeUp }}"><a href="{{ url('log-up') }}">Resgistro</a></h4>
                     </div>
                     <div class="card-body">
 
-                        @if (request()->routeIs('log-in'))
-                            @include('auth.log-in')
-                        @else
+                        @if (request()->routeIs('log-up'))
                             @include('auth.log-up')
+                        @else
+                            @include('auth.log-in')
                         @endif
                     </div>
                 </div>
